@@ -1,8 +1,9 @@
 interface Props {
     searches: string[];
+    onLabelClicked: (term: string) => void;
 }
 
-export const PreviousSearches = ({ searches }: Props) => {
+export const PreviousSearches = ({ searches, onLabelClicked }: Props) => {
     return (
         <>
             <div className="previous-searches">
@@ -10,7 +11,12 @@ export const PreviousSearches = ({ searches }: Props) => {
                 <ul className="previous-searches-list">
                     {
                         searches.map((search) => (
-                            <li key={search}>{search}</li>
+                            <li
+                                key={search}
+                                onClick={() => onLabelClicked(search)}
+                            >
+                                {search}
+                            </li>
                         ))
                     }
                 </ul>
